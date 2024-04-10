@@ -13,7 +13,7 @@ const Card = ({ data }) => {
     return (
         <div>
             <div className="card w-[90%] mx-auto lg:w-96 bg-base-100 shadow-xl ">
-                <figure><img src={image} alt="Shoes" /></figure>
+                <figure><img src={image} alt="Property" /></figure>
                 <div className="card-body ">
                     <h2 className="card-title font-playfair-display font-bold ">
                         {estate_title}
