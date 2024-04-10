@@ -13,17 +13,20 @@ const Nav = () => {
                         </div>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-10 p-2 shadow bg-base-100 rounded-box w-52">
                             <Link className="hover:border hover:border-[#aa8453] btn bg-white border-0 hover:bg-white hover:text-[#aa8453]  font-playfair-display" to='/'>Home</Link>
-                            <Link className="hover:border hover:border-[#aa8453] btn bg-white border-0 hover:bg-white hover:text-[#aa8453] font-playfair-display" to='/about'>About Us</Link>
-                            <Link className="hover:border hover:border-[#aa8453] btn bg-white border-0 hover:bg-white hover:text-[#aa8453] font-playfair-display" to='/contact'>Contact Us</Link>
+                            {/* <Link className="hover:border hover:border-[#aa8453] btn bg-white border-0 hover:bg-white hover:text-[#aa8453] font-playfair-display" to='/about'>About Us</Link> */}
+                            {/* <Link className="hover:border hover:border-[#aa8453] btn bg-white border-0 hover:bg-white hover:text-[#aa8453] font-playfair-display" to='/contact'>Contact Us</Link> */}
                             <Link className="hover:border hover:border-[#aa8453] btn bg-white border-0 hover:bg-white hover:text-[#aa8453] font-playfair-display" to='/user'>User Profile</Link>
+                            <Link className="hover:border hover:border-[#aa8453] btn bg-white border-0 hover:bg-white hover:text-[#aa8453] font-playfair-display" to='/update'>Update Profile</Link>
                         </ul>
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal px-1">
                             <Link className="hover:border hover:border-[#aa8453] btn bg-white border-0 hover:bg-white hover:text-[#aa8453]  font-playfair-display" to='/'>Home</Link>
-                            <Link className="hover:border hover:border-[#aa8453] btn bg-white border-0 hover:bg-white hover:text-[#aa8453] font-playfair-display" to='/about'>About Us</Link>
-                            <Link className="hover:border hover:border-[#aa8453] btn bg-white border-0 hover:bg-white hover:text-[#aa8453] font-playfair-display" to='/contact'>Contact Us</Link>
+                            {/* <Link className="hover:border hover:border-[#aa8453] btn bg-white border-0 hover:bg-white hover:text-[#aa8453] font-playfair-display" to='/about'>About Us</Link> */}
+                            {/* <Link className="hover:border hover:border-[#aa8453] btn bg-white border-0 hover:bg-white hover:text-[#aa8453] font-playfair-display" to='/contact'>Contact Us</Link> */}
                             <Link className="hover:border hover:border-[#aa8453] btn bg-white border-0 hover:bg-white hover:text-[#aa8453] font-playfair-display" to='/user'>User Profile</Link>
+                            <Link className="hover:border hover:border-[#aa8453] btn bg-white border-0 hover:bg-white hover:text-[#aa8453] font-playfair-display" to='/update'>Update Profile</Link>
+                            <Link className="hover:border hover:border-[#aa8453] btn bg-white border-0 hover:bg-white hover:text-[#aa8453] font-playfair-display" to='/register'>Register</Link>
 
                         </ul>
                     </div>
@@ -37,7 +40,7 @@ const Nav = () => {
                     <div className="mr-1 md:mr-3 border-2 rounded-full w-[30px] h-[30px] md:w-[50px] md:h-[50px] flex items-center justify-center border-[#b78f63]">
                         <FaRegUserCircle className="w-[30px] h-[30px]    md:w-[35px] md:h-[35px] " />
                     </div>
-                    <Link className="btn w-15 md:w-20 bg-[#aa8453] text-[#fff] font-playfair-display">Login</Link>
+                    <Link to="/login" className="btn w-15 md:w-20 bg-[#aa8453] text-[#fff] font-playfair-display">Login</Link>
                 </div>
             </div>
         </div>

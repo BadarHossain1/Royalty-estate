@@ -10,6 +10,8 @@ import Routes from './Routes/Routes';
 import Home from './Home/Home';
 
 import Property from './Home/Portfolio/Property';
+import Register from './Register/Register';
+import Login from './Home/Login/Login';
 
 
 const router = createBrowserRouter([
@@ -25,12 +27,20 @@ const router = createBrowserRouter([
         path: "/property/:id",
         loader: () => fetch('/Data.json'),
         element: <Property></Property>
-        
+
+      },
+      {
+        path: "/register",
+        element: <Register></Register>
+      },
+      {
+        path: '/login',
+        element: <Login></Login>
       }
-      
+
     ]
-      
-    
+
+
   },
 ]);
 

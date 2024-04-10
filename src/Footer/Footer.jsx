@@ -5,7 +5,7 @@ import { FaArrowUp } from "react-icons/fa";
 const Footer = () => {
     return (
         <div>
-            <footer className="footer footer-center p-10 bg-cover bg-center  bg-black text-base-content rounded relative" >
+            <footer className="footer footer-center  bg-cover bg-center  bg-black text-base-content rounded relative" >
                 <button> <a href="#navbar" className="scroll-to-top-btn  btn text-center rounded-full absolute bottom-[90%]">
                     <FaArrowUp />
                 </a></button>
@@ -23,7 +23,7 @@ const Footer = () => {
                     </div>
                 </nav>
                 <aside>
-                    <p className="text-white font-playfair-display font-semibold mb-28">Copyright © 2024 - All right reserved by Badar Hossain</p>
+                    <p className="text-white font-playfair-display font-semibold mb-16">Copyright © 2024 - All right reserved by Badar Hossain</p>
                 </aside>
             </footer>
         </div>

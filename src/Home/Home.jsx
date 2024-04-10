@@ -1,6 +1,7 @@
 import Banner from "./Banner/Banner";
 import Portfolio from "./Portfolio/Portfolio";
 import Reviews from "./Reviews/Reviews";
+import Stats from "./Stats/Stats";
 
 const Home = () => {
     return (
@@ -13,6 +14,10 @@ const Home = () => {
             </div>
             <div className="mt-[100px]">
                 <Reviews></Reviews>
+
+            </div>
+            <div className="mt-[150px] mx-auto">
+                <Stats></Stats>
 
             </div>
 
