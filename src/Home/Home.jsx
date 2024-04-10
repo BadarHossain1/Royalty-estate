@@ -3,6 +3,11 @@ import Portfolio from "./Portfolio/Portfolio";
 import Reviews from "./Reviews/Reviews";
 import Stats from "./Stats/Stats";
 
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
+
 const Home = () => {
     return (
         <div>
@@ -12,11 +17,11 @@ const Home = () => {
                 <Portfolio></Portfolio>
 
             </div>
-            <div className="mt-[100px]">
+            <div className="mt-[100px]" data-aos="zoom-in" data-aos-duration="1000">
                 <Reviews></Reviews>
 
             </div>
-            <div className="mt-[150px] mx-auto">
+            <div className="mt-[150px] mx-auto" data-aos="zoom-in" data-aos-duration="1000">
                 <Stats></Stats>
 
             </div>

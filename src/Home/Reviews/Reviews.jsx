@@ -4,7 +4,9 @@ import { FaQuoteLeft } from "react-icons/fa";
 const Reviews = () => {
 
     return (
-        <div >
+        <div 
+            
+            >
             <p className="text-black text-2xl lg:text-4xl  font-playfair-display font-semibold w-full text-center  mb-16 underline  pt-10">Our <span className="text-[#aa8453]">Happy</span> Clients</p>
 
 

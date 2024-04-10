@@ -14,8 +14,8 @@ const Login = () => {
     }
 
     return (
-        <div>
-            <div className="hero min-h-[90%] mx-auto bg-[#F8F5F0]">
+        <div className="hero min-h-[90%] mx-auto bg-[#F8F5F0]">
+            <div  data-aos="fade-left" data-aos-duration="500">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left w-2/4">
                         <h1 className="text-5xl font-bold text-[#aa8453] font-playfair-display">Login</h1>
