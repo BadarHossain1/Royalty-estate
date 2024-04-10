@@ -12,7 +12,7 @@ const Routes = () => {
             <div className="max-w-7xl mx-auto mt-3">
                 <Nav></Nav>
             </div>
-            <div className="mt-5">
+            <div className="mt-3">
                 <Outlet></Outlet>
             </div>
             <div className="w-full  mt-24">
