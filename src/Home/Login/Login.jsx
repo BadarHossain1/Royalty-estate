@@ -1,14 +1,55 @@
 import { Link } from "react-router-dom";
 import { IoMdEye } from "react-icons/io";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { IoMdEyeOff } from "react-icons/io";
 import { useForm } from "react-hook-form"
+
 import { FaGoogle } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
+import { AuthContext } from "../../Provider/ContextProvider";
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Bounce } from 'react-toastify'; 
 
 const Login = () => {
 
+    const {Information, registerUser, Logout, Login} = useContext(AuthContext);
+
     const [eye, setEye] = useState(true);
+
+
+    
+    const notify =(success) =>{
+        if(success){
+            toast.success('Login Completed. Welcome', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+                });
+        }
+        else{
+            toast.error('Failed', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+                
+                });
+
+        }
+    }
 
 
     const handleEye = (e) =>{
@@ -24,7 +65,23 @@ const Login = () => {
         formState: { errors },
       } = useForm()
 
-    const onSubmit = (data) => {console.log(data)}
+    const onSubmit = (data) => {
+        
+        Login(data.Email, data.Password)
+        .then(result=>{
+            console.log('User matched', result.user);
+            notify(true);
+            
+        })
+        .catch(error =>{
+            console.log(error);
+            notify(false);
+            
+        })    
+    
+    
+    
+    }
 
     return (
         <div className="hero min-h-[90%] mx-auto bg-[#F8F5F0]">
@@ -42,7 +99,7 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="email" name="email" placeholder="Email" className="input input-bordered"    {...register("FullName", { required: true })} />
+                                <input type="email" name="email" placeholder="Email" className="input input-bordered"    {...register("Email", { required: true })} />
                                 {errors.FullName && <span className="text-red-600">This field is required</span>}
                             </div>
                             <div className="form-control relative">
@@ -72,6 +129,7 @@ const Login = () => {
                             <p>Do not have an account? <Link to='/register' className="text-[#aa8453] font-bold font-playfair-display">Register....</Link></p>
                             <div className="form-control mt-6">
                                 <button className="btn bg-[#aa8453] text-white">Login Now</button>
+                                <ToastContainer />
                             </div>
                         </form>
                     </div>
