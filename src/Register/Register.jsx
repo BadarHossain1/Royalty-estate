@@ -55,18 +55,23 @@ const Register = () => {
     const onSubmit =  (data) => {
         
 
+        
+        
+
         registerUser(data.Email, data.Password)
         .then(result => {
             console.log(result.user);
             setSuccess(true);
             notify(true);
+
+            Information(data.FullName, data.Email, data.Photo); 
         })
         .catch(error =>{
             console.log(error)
             notify(false);
         })
 
-        Information(data);
+        
     };
 
 
@@ -78,14 +83,10 @@ const Register = () => {
 
             console.log("user signed with google", user);
             const {displayName, photoURL, email} = user;
-            console.log(displayName, email);
-            const data = {
-                name: displayName,
-                photo: photoURL,
-                email: email
-            }
-            Information(data);
-            notify(true)
+            console.log(displayName, email, photoURL);
+            
+            Information(displayName, email, photoURL);
+            notify(true);
         })
         .catch(error =>{
             console.log(error);

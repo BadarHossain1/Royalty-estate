@@ -14,7 +14,7 @@ import { Bounce } from 'react-toastify';
 
 const Login = () => {
 
-    const {Information, registerUser, Logout, Login} = useContext(AuthContext);
+    const {Information, registerUser, Logout, Login, GoogleSignIn, name, email, photo} = useContext(AuthContext);
 
     const [eye, setEye] = useState(true);
 
@@ -69,8 +69,16 @@ const Login = () => {
         
         Login(data.Email, data.Password)
         .then(result=>{
-            console.log('User matched', result.user);
+            const user = result.user;
+
+            console.log("user signed with google", user);
+            Information(name, email, photo)
+            
+            
             notify(true);
+
+            
+
             
         })
         .catch(error =>{
@@ -81,6 +89,26 @@ const Login = () => {
     
     
     
+    }
+
+    const handleGoogle = (e)=>{
+        e.preventDefault();
+        GoogleSignIn().
+        then(result =>{
+            const user = result.user;
+
+            console.log("user signed with google", user);
+            const {displayName, photoURL, email} = user;
+            Information(displayName, email, photoURL);
+            notify(true)
+        })
+        .catch(error =>{
+            console.log(error);
+            notify(false);
+        })
+
+        
+        
     }
 
     return (
@@ -118,7 +146,7 @@ const Login = () => {
                             </div>
                             <p className="text-center mt-2 font-semibold">Or Login With:</p>
                                 <div className="flex justify-center gap-6 mt-2">
-                                    <button className="btn btn-circle">
+                                    <button onClick={handleGoogle} className="btn btn-circle">
                                         <FaGoogle />
                                     </button>
                                     <button className="btn btn-circle">

@@ -1,8 +1,15 @@
 import { Link } from "react-router-dom";
 import { FaRegUserCircle } from "react-icons/fa";
+import { useContext } from "react";
+import { AuthContext } from "../Provider/ContextProvider";
 
 
 const Nav = () => {
+
+
+    const {user, Information , name, email, photo, Logout} = useContext(AuthContext);
+    console.log(name, email, photo); 
+
     return (
         <div>
             <div id="navbar" className="navbar bg-base-100">
@@ -37,10 +44,14 @@ const Nav = () => {
                 </Link>
 
                 <div className="navbar-end">
-                    <div className="mr-1 md:mr-3 border-2 rounded-full w-[30px] h-[30px] md:w-[50px] md:h-[50px] flex items-center justify-center border-[#b78f63]">
-                        <FaRegUserCircle className="w-[30px] h-[30px]    md:w-[35px] md:h-[35px] " />
+                    <div className="mr-1 md:mr-3 border-2 rounded-full w-[30px] h-[30px] md:w-[50px] md:h-[50px] flex items-center justify-center border-[#b78f63] tooltip" data-tip={name}>
+                        {
+                            user ? <img src={photo} alt="User's Photo" className="w-full h-full rounded-full" /> : <FaRegUserCircle className="w-[30px] h-[30px] md:w-[35px] md:h-[35px]" />
+                        }
                     </div>
-                    <Link to="/login" className="btn w-15 md:w-20 bg-[#aa8453] text-[#fff] font-playfair-display">Login</Link>
+                    {
+                        user ? <button onClick={Logout} className="btn w-15 md:w-20 bg-[#aa8453] text-[#fff] font-playfair-display">Logout</button> : <Link to="/login" className="btn w-15 md:w-20 bg-[#aa8453] text-[#fff] font-playfair-display">Login</Link>
+                    }
                 </div>
             </div>
         </div>
