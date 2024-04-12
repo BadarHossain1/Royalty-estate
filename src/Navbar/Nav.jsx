@@ -7,9 +7,9 @@ import { AuthContext } from "../Provider/ContextProvider";
 const Nav = () => {
 
 
-    const {user, Logout} = useContext(AuthContext);
+    const { user, Logout } = useContext(AuthContext);
     console.log("Nav user", user);
-   
+
 
     return (
         <div>
@@ -25,7 +25,6 @@ const Nav = () => {
                             {/* <Link className="hover:border hover:border-[#aa8453] btn bg-white border-0 hover:bg-white hover:text-[#aa8453] font-playfair-display" to='/contact'>Contact Us</Link> */}
                             <Link className="hover:border hover:border-[#aa8453] btn bg-white border-0 hover:bg-white hover:text-[#aa8453] font-playfair-display" to='/user'>User Profile</Link>
                             <Link className="hover:border hover:border-[#aa8453] btn bg-white border-0 hover:bg-white hover:text-[#aa8453] font-playfair-display" to='/update'>Update Profile</Link>
-                            <Link className="hover:border hover:border-[#aa8453] btn bg-white border-0 hover:bg-white hover:text-[#aa8453] font-playfair-display" to='/register'>Register</Link>
 
                         </ul>
                     </div>
@@ -36,7 +35,6 @@ const Nav = () => {
                             {/* <Link className="hover:border hover:border-[#aa8453] btn bg-white border-0 hover:bg-white hover:text-[#aa8453] font-playfair-display" to='/contact'>Contact Us</Link> */}
                             <Link className="hover:border hover:border-[#aa8453] btn bg-white border-0 hover:bg-white hover:text-[#aa8453] font-playfair-display" to='/user'>User Profile</Link>
                             <Link className="hover:border hover:border-[#aa8453] btn bg-white border-0 hover:bg-white hover:text-[#aa8453] font-playfair-display" to='/update'>Update Profile</Link>
-                            <Link className="hover:border hover:border-[#aa8453] btn bg-white border-0 hover:bg-white hover:text-[#aa8453] font-playfair-display" to='/register'>Register</Link>
 
                         </ul>
                     </div>
@@ -47,13 +45,32 @@ const Nav = () => {
                 </Link>
 
                 <div className="navbar-end">
-                    <div className="mr-1 md:mr-3 border-2 rounded-full w-[30px] h-[30px] md:w-[50px] md:h-[50px] flex items-center justify-center border-[#b78f63] tooltip" data-tip={user?.displayName || 'No Name'}>
-                        {
-                            user ? <img src={user?.photoURL || "https://lh3.googleusercontent.com/a/ACg8ocLmdRTwh59_Ti2QrsS6UfK6gtDpYy3h6cTFkhdJE6EgMALVtwSn=s96-c"} alt="User's Photo" className="w-full h-full rounded-full" /> : <FaRegUserCircle className="w-[30px] h-[30px] md:w-[35px] md:h-[35px]" />
-                        }
-                    </div>
+
                     {
-                        user ? <button onClick={Logout} className="btn w-15 md:w-20 bg-[#aa8453] text-[#fff] font-playfair-display">Logout</button> : <Link to="/login" className="btn w-15 md:w-20 bg-[#aa8453] text-[#fff] font-playfair-display">Login</Link>
+                        user ? <div className="dropdown dropdown-end mr-4">
+                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar tooltip" data-tip={user?.displayName || 'No Name'}>
+                                <div className=" " data-tip={user?.displayName || 'No Name'}>
+                                    {
+                                        user ? <img src={user?.photoURL || "https://lh3.googleusercontent.com/a/ACg8ocLmdRTwh59_Ti2QrsS6UfK6gtDpYy3h6cTFkhdJE6EgMALVtwSn=s96-c"} alt="User's Photo" className="w-full h-full rounded-full" /> : <FaRegUserCircle className="w-[30px] h-[30px] md:w-[35px] md:h-[35px]" />
+                                    }
+                                </div>
+                            </div>
+                            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-10 p-2 shadow bg-base-100 rounded-box w-52">
+                                <li>
+                                    <Link to="/update" className="justify-between">
+                                        User Profile
+
+                                    </Link>
+                                </li>
+                                <li><button onClick={Logout} className=" ">Logout</button></li>
+                            </ul>
+                        </div> : <div className="flex">
+                            <div className="mr-1 md:mr-3 border-2 rounded-full w-[30px] h-[30px] md:w-[50px] md:h-[50px] flex items-center justify-center border-[#b78f63] tooltip" data-tip={user?.displayName || 'No Name'}>
+                                <FaRegUserCircle className="w-[30px] h-[30px] md:w-[35px] md:h-[35px]" />
+                            </div>
+                            <Link to="/login" className="btn w-15 md:w-20 bg-[#aa8453] text-[#fff] font-playfair-display">Login</Link>
+                        </div>
+
                     }
                 </div>
             </div>
