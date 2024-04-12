@@ -8,15 +8,18 @@ import { FaFacebook } from "react-icons/fa";
 import { AuthContext } from "../Provider/ContextProvider";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Bounce } from 'react-toastify'; 
+import { Bounce } from 'react-toastify';
 
 const Register = () => {
-    const {Information, registerUser, GoogleSignIn} = useContext(AuthContext);
+    const { registerUser, GoogleSignIn, updateUserProfile } = useContext(AuthContext);
     const [eye, setEye] = useState(true);
-    const [success, setSuccess] = useState(false);
     
+    
+
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+
     const notify = (success) => {
-        if(success){
+        if (success) {
             toast.success('User Created Successfully', {
                 position: "top-center",
                 autoClose: 5000,
@@ -29,7 +32,7 @@ const Register = () => {
                 transition: Bounce,
             });
         } else {
-            toast.error('Failed Creating User', {
+            toast.error('Wrong Password Format', {
                 position: "top-center",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -48,53 +51,60 @@ const Register = () => {
         setEye(!eye);
     }
 
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit , formState: { errors }} = useForm();
 
 
 
-    const onSubmit =  (data) => {
-        
+    const onSubmit = (data) => {
 
-        
-        
+        const { FullName, Photo } = data;
+
+
+
+
 
         registerUser(data.Email, data.Password)
-        .then(result => {
-            console.log(result.user);
-            setSuccess(true);
-            notify(true);
+            .then(result => {
+                console.log(result.user);
+                
+                notify(true);
+                updateUserProfile(FullName, Photo)
+                    .then(result => {
+                        console.log(result.user)
+                        //navigate here to home
+                    })
 
-            Information(data.FullName, data.Email, data.Photo); 
-        })
-        .catch(error =>{
-            console.log(error)
-            notify(false);
-        })
 
-        
+            })
+            .catch(error => {
+                console.log(error)
+               
+            })
+
+
     };
 
 
-    const handleGoogle = (e)=>{
+    const handleGoogle = (e) => {
         e.preventDefault();
         GoogleSignIn().
-        then(result =>{
-            const user = result.user;
+            then(result => {
+                const user = result.user;
 
-            console.log("user signed with google", user);
-            const {displayName, photoURL, email} = user;
-            console.log(displayName, email, photoURL);
-            
-            Information(displayName, email, photoURL);
-            notify(true);
-        })
-        .catch(error =>{
-            console.log(error);
-            notify(false);
-        })
+                console.log("user signed with google", user);
+                const { displayName, photoURL, email } = user;
+                console.log(displayName, email, photoURL);
 
-        
-        
+
+                notify(true);
+            })
+            .catch(error => {
+                console.log(error);
+               
+            })
+
+
+
     }
 
     return (
@@ -107,7 +117,7 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">Name</span>
                                 </label>
-                                <input type="name" name="name" placeholder=" Name" className="input input-bordered" {...register("FullName", { required: true })} />
+                                <input type="name" name="name" placeholder="FullName" className="input input-bordered" {...register("FullName", { required: true })} />
                             </div>
                             <div className="form-control">
                                 <label className="label">
@@ -125,10 +135,22 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type={eye ? "password" : "text"} name="password" placeholder="Password" className="input input-bordered" {...register("Password", { required: true })} />
+                                <input type={eye ? "password" : "text"} name="password" placeholder="Password" className="input input-bordered"  {...register("Password", {
+                                    required: true,
+                                     pattern: {
+                                        value: passwordRegex,
+                                        message:
+                                            "Password must contain at least one uppercase letter, one lowercase letter, and be at least 6 characters long.",
+                                     },
+                                })} />
                                 <button onClick={handleEye}>
                                     {eye ? <IoMdEye className="absolute right-3 bottom-3 w-6 h-6 " /> : <IoMdEyeOff className="absolute right-3 bottom-3 w-6 h-6" />}
                                 </button>
+                                 {errors.Password && notify(false)
+
+                                
+                                
+                            } 
                             </div>
                             <p className="text-center mt-5 font-semibold">Or Register With:</p>
                             <div className="flex justify-center gap-6 mt-4">

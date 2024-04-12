@@ -7,8 +7,9 @@ import { AuthContext } from "../Provider/ContextProvider";
 const Nav = () => {
 
 
-    const {user, Information , name, email, photo, Logout} = useContext(AuthContext);
-    console.log(name, email, photo); 
+    const {user, Logout} = useContext(AuthContext);
+    console.log("Nav user", user);
+   
 
     return (
         <div>
@@ -24,6 +25,8 @@ const Nav = () => {
                             {/* <Link className="hover:border hover:border-[#aa8453] btn bg-white border-0 hover:bg-white hover:text-[#aa8453] font-playfair-display" to='/contact'>Contact Us</Link> */}
                             <Link className="hover:border hover:border-[#aa8453] btn bg-white border-0 hover:bg-white hover:text-[#aa8453] font-playfair-display" to='/user'>User Profile</Link>
                             <Link className="hover:border hover:border-[#aa8453] btn bg-white border-0 hover:bg-white hover:text-[#aa8453] font-playfair-display" to='/update'>Update Profile</Link>
+                            <Link className="hover:border hover:border-[#aa8453] btn bg-white border-0 hover:bg-white hover:text-[#aa8453] font-playfair-display" to='/register'>Register</Link>
+
                         </ul>
                     </div>
                     <div className="navbar-center hidden lg:flex">
@@ -44,9 +47,9 @@ const Nav = () => {
                 </Link>
 
                 <div className="navbar-end">
-                    <div className="mr-1 md:mr-3 border-2 rounded-full w-[30px] h-[30px] md:w-[50px] md:h-[50px] flex items-center justify-center border-[#b78f63] tooltip" data-tip={name}>
+                    <div className="mr-1 md:mr-3 border-2 rounded-full w-[30px] h-[30px] md:w-[50px] md:h-[50px] flex items-center justify-center border-[#b78f63] tooltip" data-tip={user?.displayName || 'No Name'}>
                         {
-                            user ? <img src={photo} alt="User's Photo" className="w-full h-full rounded-full" /> : <FaRegUserCircle className="w-[30px] h-[30px] md:w-[35px] md:h-[35px]" />
+                            user ? <img src={user?.photoURL || "https://lh3.googleusercontent.com/a/ACg8ocLmdRTwh59_Ti2QrsS6UfK6gtDpYy3h6cTFkhdJE6EgMALVtwSn=s96-c"} alt="User's Photo" className="w-full h-full rounded-full" /> : <FaRegUserCircle className="w-[30px] h-[30px] md:w-[35px] md:h-[35px]" />
                         }
                     </div>
                     {

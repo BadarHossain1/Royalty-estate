@@ -14,7 +14,7 @@ import { Bounce } from 'react-toastify';
 
 const Login = () => {
 
-    const {Information, registerUser, Logout, Login, GoogleSignIn, name, email, photo} = useContext(AuthContext);
+    const{   Login, GoogleSignIn} = useContext(AuthContext);
 
     const [eye, setEye] = useState(true);
 
@@ -72,7 +72,7 @@ const Login = () => {
             const user = result.user;
 
             console.log("user signed with google", user);
-            Information(name, email, photo)
+            
             
             
             notify(true);
@@ -98,8 +98,8 @@ const Login = () => {
             const user = result.user;
 
             console.log("user signed with google", user);
-            const {displayName, photoURL, email} = user;
-            Information(displayName, email, photoURL);
+            
+            
             notify(true)
         })
         .catch(error =>{
