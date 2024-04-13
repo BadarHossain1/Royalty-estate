@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import Banner from "./Banner/Banner";
 import Portfolio from "./Portfolio/Portfolio";
 import Reviews from "./Reviews/Reviews";
@@ -11,6 +12,10 @@ AOS.init();
 const Home = () => {
     return (
         <div>
+
+            <Helmet>
+                <title>Home</title>
+            </Helmet>
 
             <div className="">
                 <Banner></Banner>

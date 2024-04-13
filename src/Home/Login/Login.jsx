@@ -11,10 +11,11 @@ import { AuthContext } from "../../Provider/ContextProvider";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Bounce } from 'react-toastify'; 
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
 
-    const{   Login, GoogleSignIn, setInfo} = useContext(AuthContext);
+    const{   Login, GoogleSignIn, setInfo, FacebookSignIn} = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
     console.log('location in login page', location);
@@ -75,9 +76,10 @@ const Login = () => {
             const user = result.user;
 
             console.log("user signed with google", user);
+            // const{displayName, photoURL} = user;
+            // setInfo({displayName:displayName, photoURL:photoURL})
             
             navigate(location?.state || '/')
-            
             notify(true);
 
             
@@ -103,6 +105,33 @@ const Login = () => {
             console.log("user signed with google", user);
             const{displayName, photoURL} = user;
             setInfo({displayName:displayName, photoURL:photoURL})
+
+            navigate(location?.state || '/')
+            
+            
+            notify(true)
+        })
+        .catch(error =>{
+            console.log(error);
+            notify(false);
+        })
+
+        
+        
+    }
+
+
+    const handleFacebook = (e)=>{
+        e.preventDefault();
+        FacebookSignIn().
+        then(result =>{
+            const user = result.user;
+
+            console.log("user signed with google", user);
+            const{displayName, photoURL} = user;
+            setInfo({displayName:displayName, photoURL:photoURL})
+
+            navigate(location?.state || '/')
             
             
             notify(true)
@@ -118,6 +147,9 @@ const Login = () => {
 
     return (
         <div className="hero min-h-[90%] mx-auto bg-[#F8F5F0]">
+            <Helmet>
+                <title>LogIn</title>
+            </Helmet>
             <div  data-aos="fade-left" data-aos-duration="500">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left w-2/4">
@@ -154,7 +186,7 @@ const Login = () => {
                                     <button onClick={handleGoogle} className="btn btn-circle">
                                         <FaGoogle />
                                     </button>
-                                    <button className="btn btn-circle">
+                                    <button onClick={handleFacebook} className="btn btn-circle">
                                         <FaFacebook />
                                     </button>
                                 </div>

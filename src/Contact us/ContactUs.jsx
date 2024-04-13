@@ -1,7 +1,14 @@
+import { Helmet } from "react-helmet-async";
 
 const ContactUs = () => {
     return (
+
+        
+
         <div className="w-full mx-auto flex flex-col gap-4 md:flex-row mt-6">
+            <Helmet>
+                <title>Contact Us</title>
+            </Helmet>
             <div className="w-1/2 text-right">
             <div className="mockup-phone ">
                 <div className="camera"></div>

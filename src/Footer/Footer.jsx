@@ -6,13 +6,19 @@ const Footer = () => {
     return (
         <div>
             <footer className="footer footer-center  bg-cover bg-center  bg-black text-base-content rounded relative" >
-                <button> <a href="#navbar" className="scroll-to-top-btn  btn text-center rounded-full absolute bottom-[90%]">
+                <button> <a href="#navbar" className="scroll-to-top-btn  btn text-center rounded-full absolute bottom-[92%]">
                     <FaArrowUp />
                 </a></button>
+                <Link to="/" className="flex flex-col gap-0 mt-3">
+                    <p className="text-3xl text-[#b78f63] font-bold font-playfair-display">ROYALTY</p>
+                    <p className="text-lg font-semibold font-playfair-display text-white">Estate</p>
+                </Link>
                 <nav className="grid grid-flow-col gap-4">
-                    <Link className="link link-hover text-white font-playfair-display font-bold" to='/user'>About</Link>
+                    
+                    <Link className="link link-hover text-white font-playfair-display font-bold" to='/'>Home</Link>
                     <Link className="link link-hover text-white font-playfair-display font-bold" to='/user'>Contact Us</Link>
-                    <Link className="link link-hover text-white font-playfair-display font-bold" to='/user'>Home</Link>
+                    <Link className="link link-hover text-white font-playfair-display font-bold" to='/update'>Profile</Link>
+
 
                 </nav>
                 <nav>
@@ -26,6 +32,9 @@ const Footer = () => {
                     <p className="text-white font-playfair-display font-semibold mb-16">Copyright © 2024 - All right reserved by Badar Hossain</p>
                 </aside>
             </footer>
+
+
+            
         </div>
     );
 };

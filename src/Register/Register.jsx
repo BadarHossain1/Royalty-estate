@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { IoMdEye } from "react-icons/io";
 import { useContext, useState } from "react";
 import { IoMdEyeOff } from "react-icons/io";
@@ -13,6 +13,11 @@ import { Bounce } from 'react-toastify';
 const Register = () => {
     const { registerUser, GoogleSignIn, updateUserProfile, setInfo } = useContext(AuthContext);
     const [eye, setEye] = useState(true);
+
+
+
+    const navigate = useNavigate();
+    const from = "/";
 
 
 
@@ -32,7 +37,7 @@ const Register = () => {
                 theme: "light",
                 transition: Bounce,
             });
-        } 
+        }
     }
 
 
@@ -49,7 +54,7 @@ const Register = () => {
 
     const onSubmit = (data) => {
         const { FullName, Photo, Password } = data;
-    
+
         if (passwordRegex.test(Password)) {
             registerUser(data.Email, Password)
                 .then(result => {
@@ -60,10 +65,13 @@ const Register = () => {
                         .then(result => {
                             console.log(result.user);
                             //navigate here to home
+                            navigate(from);
+
+
                         })
                         .catch(error => {
                             console.log(error);
-                           
+
                         });
                 })
                 .catch(error => {
@@ -94,7 +102,7 @@ const Register = () => {
             });
         }
     };
-    
+
 
 
     const handleGoogle = (e) => {
@@ -107,15 +115,16 @@ const Register = () => {
                 console.log("user signed with google", user);
                 const { displayName, photoURL, email } = user;
                 console.log(displayName, email, photoURL);
-                setInfo({displayName:displayName, photoURL:photoURL})
+                setInfo({ displayName: displayName, photoURL: photoURL })
 
 
 
                 notify(true);
+                navigate(from);
             })
             .catch(error => {
                 console.log(error);
-                
+
 
             })
 
@@ -153,13 +162,13 @@ const Register = () => {
                                 </label>
                                 <input type={eye ? "password" : "text"} name="password" placeholder="Password" className="input input-bordered"  {...register("Password", {
                                     required: true,
-                                    
+
                                 })} />
                                 <button onClick={handleEye}>
                                     {eye ? <IoMdEye className="absolute right-3 bottom-3 w-6 h-6 " /> : <IoMdEyeOff className="absolute right-3 bottom-3 w-6 h-6" />}
                                 </button>
 
-                            
+
                             </div>
                             <p className="text-center mt-5 font-semibold">Or Register With:</p>
                             <div className="flex justify-center gap-6 mt-4">
@@ -179,7 +188,7 @@ const Register = () => {
                     </div>
                     <div className="text-center lg:text-left w-2/4">
                         <p className="text-5xl font-bold text-[#aa8453] font-playfair-display">Register</p>
-                        
+
                     </div>
                 </div>
             </div>
