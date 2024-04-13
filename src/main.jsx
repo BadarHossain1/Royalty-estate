@@ -14,6 +14,8 @@ import Register from './Register/Register';
 import Login from './Home/Login/Login';
 import ContextProvider from './Provider/ContextProvider';
 import UpdateProfile from './UpdateProfile/UpdateProfile';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
+import ContactUs from './Contact us/ContactUs';
 
 
 const router = createBrowserRouter([
@@ -28,7 +30,7 @@ const router = createBrowserRouter([
       {
         path: "/property/:id",
         loader: () => fetch('/Data.json'),
-        element: <Property></Property>
+        element: <PrivateRoute><Property></Property></PrivateRoute>
 
       },
       {
@@ -41,7 +43,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/update',
-        element: <UpdateProfile></UpdateProfile>
+        element: <PrivateRoute><UpdateProfile></UpdateProfile></PrivateRoute>
+      },
+      {
+        path: '/contact',
+        element: <ContactUs></ContactUs>
       }
 
     ]

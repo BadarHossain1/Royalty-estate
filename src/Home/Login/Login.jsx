@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { IoMdEye } from "react-icons/io";
 import { useContext, useState } from "react";
 import { IoMdEyeOff } from "react-icons/io";
@@ -14,7 +14,10 @@ import { Bounce } from 'react-toastify';
 
 const Login = () => {
 
-    const{   Login, GoogleSignIn} = useContext(AuthContext);
+    const{   Login, GoogleSignIn, setInfo} = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+    console.log('location in login page', location);
 
     const [eye, setEye] = useState(true);
 
@@ -73,7 +76,7 @@ const Login = () => {
 
             console.log("user signed with google", user);
             
-            
+            navigate(location?.state || '/')
             
             notify(true);
 
@@ -98,6 +101,8 @@ const Login = () => {
             const user = result.user;
 
             console.log("user signed with google", user);
+            const{displayName, photoURL} = user;
+            setInfo({displayName:displayName, photoURL:photoURL})
             
             
             notify(true)

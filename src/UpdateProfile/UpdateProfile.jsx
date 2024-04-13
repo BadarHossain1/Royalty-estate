@@ -94,7 +94,7 @@ const UpdateProfile = () => {
                         <label className="label">
                             <span className="label-text">Name</span>
                         </label>
-                        <input type="text" placeholder="FullName" className="input input-bordered" value={user?.displayName}  {...register("FullName", { required: false })} />
+                        <input type="text" placeholder="FullName" className="input input-bordered" defaultValue={user?.displayName}  {...register("FullName", { required: false })} />
                     </div>
                     <div className="form-control">
                         <label className="label">
@@ -106,7 +106,7 @@ const UpdateProfile = () => {
                         <label className="label">
                             <span className="label-text">Image</span>
                         </label>
-                        <input type="text" placeholder="Photo" className="input input-bordered" value={user?.photoURL} {...register("Photo", { required: false })} />
+                        <input type="text" placeholder="Photo" className="input input-bordered" defaultValue={user?.photoURL} {...register("Photo", { required: false })} />
 
                     </div>
                     <div className="form-control mt-6">

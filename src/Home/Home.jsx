@@ -12,16 +12,18 @@ const Home = () => {
     return (
         <div>
 
-            <Banner></Banner>
-            <div className="bg-[#F8F5F0] w-full mt-[100px]">
+            <div className="">
+                <Banner></Banner>
+            </div>
+            <div className="bg-[#F8F5F0] w-full  mt-[100px]">
                 <Portfolio></Portfolio>
 
             </div>
-            <div className="mt-[100px]" data-aos="zoom-in" data-aos-duration="1000">
+            <div className="mt-[100px]" data-aos="zoom-in" data-aos-duration="2000">
                 <Reviews></Reviews>
 
             </div>
-            <div className="mt-[150px] mx-auto" data-aos="zoom-in" data-aos-duration="1000">
+            <div className="mt-[150px] mx-auto" data-aos="zoom-in" data-aos-duration="2000">
                 <Stats></Stats>
 
             </div>
