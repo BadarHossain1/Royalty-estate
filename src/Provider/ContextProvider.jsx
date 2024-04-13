@@ -56,7 +56,6 @@ const ContextProvider = ({ children }) => {
 
     const authInfo = {
         user,
-        
         auth,
         registerUser,
         Login,

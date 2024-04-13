@@ -13,6 +13,7 @@ import Property from './Home/Portfolio/Property';
 import Register from './Register/Register';
 import Login from './Home/Login/Login';
 import ContextProvider from './Provider/ContextProvider';
+import UpdateProfile from './UpdateProfile/UpdateProfile';
 
 
 const router = createBrowserRouter([
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login></Login>
+      },
+      {
+        path: '/update',
+        element: <UpdateProfile></UpdateProfile>
       }
 
     ]

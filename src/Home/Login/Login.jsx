@@ -62,7 +62,7 @@ const Login = () => {
         register,
         handleSubmit,
         
-        formState: { errors },
+        
       } = useForm()
 
     const onSubmit = (data) => {
@@ -128,14 +128,14 @@ const Login = () => {
                                     <span className="label-text">Email</span>
                                 </label>
                                 <input type="email" name="email" placeholder="Email" className="input input-bordered"    {...register("Email", { required: true })} />
-                                {errors.FullName && <span className="text-red-600">This field is required</span>}
+                                
                             </div>
                             <div className="form-control relative">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
                                 <input type={eye? "password" : "text" } name="password" placeholder="Password" className="input input-bordered" {...register("Password", { required: true })} />
-                                {errors.Password && <span className="text-red-600">This field is required</span>}
+                               
                                 <button onClick={handleEye}>
                                     {
                                        eye? <IoMdEye className="absolute right-3 bottom-3 w-6 h-6" /> :  <IoMdEyeOff className="absolute right-3 bottom-3 w-6 h-6" />

@@ -40,31 +40,32 @@ const Nav = () => {
                     </div>
                 </div>
                 <Link to="/" className="flex flex-col gap-0">
-                    <p className="text-3xl text-[#b78f63] font-semibold"><i>ROYALTY</i></p>
-                    <p className="text-lg font-semibold"><i>Estate</i></p>
+                    <p className="text-3xl text-[#b78f63] font-bold font-playfair-display">ROYALTY</p>
+                    <p className="text-lg font-semibold font-playfair-display">Estate</p>
                 </Link>
 
                 <div className="navbar-end">
 
                     {
                         user ? <div className="dropdown dropdown-end mr-4">
-                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar tooltip" data-tip={user?.displayName || 'No Name'}>
+                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle mr-1 md:mr-3 border-2 rounded-full w-[50px] h-[30px] md:w-[60px] md:h-[60px] flex items-center justify-center border-[#b78f63] avatar tooltip " data-tip={user?.displayName || 'No Name'}>
                                 <div className=" " data-tip={user?.displayName || 'No Name'}>
                                     {
                                         user ? <img src={user?.photoURL || "https://lh3.googleusercontent.com/a/ACg8ocLmdRTwh59_Ti2QrsS6UfK6gtDpYy3h6cTFkhdJE6EgMALVtwSn=s96-c"} alt="User's Photo" className="w-full h-full rounded-full" /> : <FaRegUserCircle className="w-[30px] h-[30px] md:w-[35px] md:h-[35px]" />
                                     }
                                 </div>
                             </div>
-                            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-10 p-2 shadow bg-base-100 rounded-box w-52">
+                            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-10 p-2 shadow bg-base-100 rounded-box w-52 ">
+                                <li className="text-center mb-1">{user?.displayName}</li>
                                 <li>
-                                    <Link to="/update" className="justify-between">
-                                        User Profile
+                                    <Link to="/update" className="justify-between hover:bg-[#aa8453] hover:text-white">
+                                        Update Profile
 
                                     </Link>
                                 </li>
-                                <li><button onClick={Logout} className=" ">Logout</button></li>
+                                <li><button onClick={Logout} className="hover:bg-[#aa8453] hover:text-white">Logout</button></li>
                             </ul>
-                        </div> : <div className="flex">
+                        </div> : <div className="flex items-center">
                             <div className="mr-1 md:mr-3 border-2 rounded-full w-[30px] h-[30px] md:w-[50px] md:h-[50px] flex items-center justify-center border-[#b78f63] tooltip" data-tip={user?.displayName || 'No Name'}>
                                 <FaRegUserCircle className="w-[30px] h-[30px] md:w-[35px] md:h-[35px]" />
                             </div>
