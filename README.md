@@ -2,12 +2,12 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules. -->
 
-Name of the Website: Royalty Estate
+#Name of the Website: Royalty Estate
 
-Live Site :
+#Live Site :
 
 
-Features:
+##Features:
 - Users Can Register Or Login using their Information and get a seamless experience.
 - Users Can Register Or Login using their Social Media Handles.
 - Users can update their information like Name and Profile Picture.
@@ -15,11 +15,12 @@ Features:
 - Handles Errors efficiently and gives user a proper experience.
 
 
-Npm package used:
+##Npm package used:
 
-1: AOS Package (https://www.npmjs.com/package/aos)
-2: React Hook Form (https://react-hook-form.com/)
-3: Swiper Slider (https://swiperjs.com/)
+1: [AOS Package](https://www.npmjs.com/package/aos)
+2: [React Hook Form](https://react-hook-form.com/)
+3: [Swiper Slider](https://swiperjs.com/)
+
  
 
 
