@@ -1,6 +1,6 @@
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { IoMdEye } from "react-icons/io";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { IoMdEyeOff } from "react-icons/io";
 import { useForm } from "react-hook-form"
 import { FaGoogle } from "react-icons/fa";
@@ -10,7 +10,11 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Bounce } from 'react-toastify';
 
+
 const Register = () => {
+    useEffect(()=>{
+        document.title = "Register"
+    },[])
     const { registerUser, GoogleSignIn, updateUserProfile, setInfo } = useContext(AuthContext);
     const [eye, setEye] = useState(true);
 
@@ -134,6 +138,7 @@ const Register = () => {
 
     return (
         <div className="hero min-h-[90%] mx-auto bg-[#F8F5F0]">
+            
             <div data-aos="fade-right" data-aos-duration="500">
                 <div className="hero-content flex-col-reverse lg:flex-row-reverse">
                     <div className="card shrink-0 w-3/4 max-w-sm shadow-2xl bg-base-100">

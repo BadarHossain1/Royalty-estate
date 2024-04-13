@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+import { useEffect } from "react";
 import Banner from "./Banner/Banner";
 import Portfolio from "./Portfolio/Portfolio";
 import Reviews from "./Reviews/Reviews";
@@ -10,12 +10,14 @@ import 'aos/dist/aos.css'; // You can also use <link> for styles
 AOS.init();
 
 const Home = () => {
+
+    useEffect(()=>{
+        document.title = "Home"
+    },[])
     return (
         <div>
 
-            <Helmet>
-                <title>Home</title>
-            </Helmet>
+         
 
             <div className="">
                 <Banner></Banner>

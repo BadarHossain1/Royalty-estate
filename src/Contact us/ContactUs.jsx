@@ -1,14 +1,16 @@
-import { Helmet } from "react-helmet-async";
+import { useEffect } from "react";
 
 const ContactUs = () => {
+
+    useEffect(()=>{
+        document.title = "Contact Us"
+    },[])
     return (
 
         
 
         <div className="w-full mx-auto flex flex-col gap-4 md:flex-row mt-6">
-            <Helmet>
-                <title>Contact Us</title>
-            </Helmet>
+            
             <div className="w-1/2 text-right">
             <div className="mockup-phone ">
                 <div className="camera"></div>

@@ -1,6 +1,6 @@
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { IoMdEye } from "react-icons/io";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { IoMdEyeOff } from "react-icons/io";
 import { useForm } from "react-hook-form"
 
@@ -11,9 +11,13 @@ import { AuthContext } from "../../Provider/ContextProvider";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Bounce } from 'react-toastify'; 
-import { Helmet } from "react-helmet-async";
+
 
 const Login = () => {
+
+    useEffect(()=>{
+        document.title = "LogIn"
+    },[])
 
     const{   Login, GoogleSignIn, setInfo, FacebookSignIn} = useContext(AuthContext);
     const location = useLocation();
@@ -147,9 +151,7 @@ const Login = () => {
 
     return (
         <div className="hero min-h-[90%] mx-auto bg-[#F8F5F0]">
-            <Helmet>
-                <title>LogIn</title>
-            </Helmet>
+            
             <div  data-aos="fade-left" data-aos-duration="500">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left w-2/4">

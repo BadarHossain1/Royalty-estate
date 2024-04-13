@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
-import { Helmet, HelmetProvider } from 'react-helmet-async';
+
 
 import './index.css'
 import {
@@ -18,12 +18,14 @@ import ContextProvider from './Provider/ContextProvider';
 import UpdateProfile from './UpdateProfile/UpdateProfile';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import ContactUs from './Contact us/ContactUs';
+import ErrorPage from './ErrorPage/ErrorPage';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Routes></Routes>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -50,7 +52,8 @@ const router = createBrowserRouter([
       {
         path: '/contact',
         element: <ContactUs></ContactUs>
-      }
+      },
+
 
     ]
 
@@ -60,10 +63,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <HelmetProvider>
-      <ContextProvider>
-        <RouterProvider router={router} />
-      </ContextProvider>
-    </HelmetProvider>
+
+    <ContextProvider>
+      <RouterProvider router={router} />
+    </ContextProvider>
+
   </React.StrictMode>,
 )

@@ -3,11 +3,14 @@ import { useForm } from "react-hook-form"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Bounce } from 'react-toastify';
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../Provider/ContextProvider";
-import { Helmet } from "react-helmet-async";
 
 const UpdateProfile = () => {
+
+    useEffect(()=>{
+        document.title = "Update Profile"
+    },[])
 
     const { updateUserProfile, user } = useContext(AuthContext);
     console.log(user);
@@ -83,9 +86,7 @@ const UpdateProfile = () => {
 
     return (
         <div className="hero min-h-[90%] mx-auto bg-[#F8F5F0]">
-            <Helmet>
-                <title>Update Profile</title>
-            </Helmet>
+            
             <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mx-auto mt-10 pt-8 mb-6">
                 <p className="text-4xl text-[#aa8453]  font-bold mx-auto font-playfair-display">Update Profile</p>
                 <div className="avatar">
