@@ -15,7 +15,7 @@ const Register = () => {
     useEffect(()=>{
         document.title = "Register"
     },[])
-    const { registerUser, GoogleSignIn, updateUserProfile, setInfo } = useContext(AuthContext);
+    const { registerUser, GoogleSignIn, updateUserProfile, setInfo, FacebookSignIn } = useContext(AuthContext);
     const [eye, setEye] = useState(true);
 
 
@@ -64,6 +64,7 @@ const Register = () => {
                 .then(result => {
                     console.log(result.user);
                     notify(true);
+                    
                     setInfo({ displayName: FullName, photoURL: Photo });
                     updateUserProfile(FullName, Photo)
                         .then(result => {
@@ -136,6 +137,30 @@ const Register = () => {
 
     }
 
+    const handleFacebook = (e)=>{
+        e.preventDefault();
+        FacebookSignIn().
+        then(result =>{
+            const user = result.user;
+
+            console.log("user signed with google", user);
+            const{displayName, photoURL} = user;
+            setInfo({displayName:displayName, photoURL:photoURL})
+
+            navigate(location?.state || '/')
+            
+            
+            notify(true)
+        })
+        .catch(error =>{
+            console.log(error);
+            notify(false);
+        })
+
+        
+        
+    }
+
     return (
         <div className="hero min-h-[90%] mx-auto bg-[#F8F5F0]">
             
@@ -180,7 +205,7 @@ const Register = () => {
                                 <button onClick={handleGoogle} className="btn btn-circle">
                                     <FaGoogle />
                                 </button>
-                                <button className="btn btn-circle">
+                                <button onClick={handleFacebook} className="btn btn-circle">
                                     <FaFacebook />
                                 </button>
                             </div>

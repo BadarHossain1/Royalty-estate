@@ -17,6 +17,7 @@ const ContextProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [info, setInfo] = useState({});
+   
 
     const registerUser = (email, password) => {
         setLoading(true);
@@ -65,6 +66,7 @@ const ContextProvider = ({ children }) => {
             setUser(currentUser);
             setLoading(false);
             
+            
 
 
         })
@@ -73,17 +75,17 @@ const ContextProvider = ({ children }) => {
             unsubscribe();
         }
 
-    }, [])
+    }, []);
 
     const authInfo = {
         user,
         auth,
-        loading,
+        loading, setLoading,
         registerUser,
         Login,
         Logout,
         GoogleSignIn, FacebookSignIn,
-        updateUserProfile, setInfo, info
+        updateUserProfile, setInfo, info, reload, setReload
     }
 
     return (
