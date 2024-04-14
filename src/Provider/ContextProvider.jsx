@@ -85,7 +85,7 @@ const ContextProvider = ({ children }) => {
         Login,
         Logout,
         GoogleSignIn, FacebookSignIn,
-        updateUserProfile, setInfo, info, reload, setReload
+        updateUserProfile, setInfo, info
     }
 
     return (
