@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import 'swiper/css/pagination';
+
 import { Pagination } from 'swiper/modules';
 
 
@@ -17,14 +18,14 @@ const Banner = () => {
             <Swiper pagination={{
                 dynamicBullets: true,
             }}
-                modules={[Pagination]} className="mySwiper  w-full h-[550px]  ">
-                <SwiperSlide><div className="hero w-full h-[550px]" style={{ backgroundImage: 'url(https://i.ibb.co/JzSWXp9/mansion-1.jpg)' }}>
+                modules={[Pagination]} className="mySwiper  w-full h-[500px] lg:h-[550px]  ">
+                <SwiperSlide><div className="hero w-full h-[550px]" style={{ backgroundImage: 'url(https://i.ibb.co/nrq0G42/mansion3.jpg)' }}>
                     <div className="hero-overlay bg-opacity-50"></div>
                     <div className="hero-content text-center text-neutral-content">
                         <div className="">
                             <p className="text-4xl  md:text-7xl  font-extrabold font-playfair-display text-[#fff]  text-center" >Discover Your Dream Home <br />
                                 in the Lap of Luxury</p>
-                            <button className=""><a href="#portfolio" className="scroll-to-top-btn btn btn-ghost bg-[#aa8453] text-white mt-20 ">
+                            <button className="transition duration-1000 ease-in-out"><a href="#portfolio" className="scroll-to-top-btn transition duration-3000 ease-out scroll-smooth btn btn-ghost bg-[#aa8453] text-white mt-20 ">
                                 Our Listings
                             </a></button>
                         </div>
@@ -38,7 +39,7 @@ const Banner = () => {
                             <div className="">
                                 <p className="text-4xl  md:text-7xl  font-extrabold font-playfair-display text-[#fff]  text-center" >Discover Your Dream Home <br />
                                     in the Lap of Luxury</p>
-                                <button className=""><a href="#portfolio" className="scroll-to-top-btn btn btn-ghost bg-[#aa8453] text-white mt-20 ">
+                                <button className="transition duration-1000 ease-in-out"><a href="#portfolio" className="scroll-to-top-btn btn btn-ghost bg-[#aa8453] text-white mt-20 ">
                                     Our Listings
                                 </a></button>
                             </div>
@@ -52,7 +53,7 @@ const Banner = () => {
                             <div className="">
                                 <p className="text-4xl  md:text-7xl  font-extrabold font-playfair-display text-[#fff]  text-center" >Discover Your Dream Home <br />
                                     in the Lap of Luxury</p>
-                                <button className=""><a href="#portfolio" className="scroll-to-top-btn btn btn-ghost bg-[#aa8453] text-white mt-20 ">
+                                <button className="transition duration-1000 ease-in-out"><a href="#portfolio" className="scroll-to-top-btn btn btn-ghost bg-[#aa8453] text-white mt-20 ">
                                     Our Listings
                                 </a></button>
                             </div>
@@ -66,7 +67,7 @@ const Banner = () => {
                             <div className="">
                                 <p className="text-4xl  md:text-7xl  font-extrabold font-playfair-display text-[#fff]  text-center" >Discover Your Dream Home <br />
                                     in the Lap of Luxury</p>
-                                <button className=""><a href="#portfolio" className="scroll-to-top-btn btn btn-ghost bg-[#aa8453] text-white mt-20 ">
+                                <button className="transition duration-1000 ease-in-out"><a href="#portfolio" className="scroll-to-top-btn btn btn-ghost bg-[#aa8453] text-white mt-20 ">
                                     Our Listings
                                 </a></button>
                             </div>

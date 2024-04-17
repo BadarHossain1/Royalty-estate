@@ -1,11 +1,11 @@
-import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { IoMdEye } from "react-icons/io";
 import { useContext, useEffect, useState } from "react";
 import { IoMdEyeOff } from "react-icons/io";
 import { useForm } from "react-hook-form"
 
 import { FaGoogle } from "react-icons/fa";
-import { FaFacebook } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 import { AuthContext } from "../../Provider/ContextProvider";
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -19,13 +19,16 @@ const Login = () => {
         document.title = "LogIn"
     },[])
 
-    const{   Login, GoogleSignIn, setInfo, FacebookSignIn} = useContext(AuthContext);
+    const{   Login, GoogleSignIn, setInfo, FacebookSignIn, GithubSignIn} = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
     console.log('location in login page', location);
 
     const [eye, setEye] = useState(true);
 
+
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+     
 
     
     const notify =(success) =>{
@@ -43,7 +46,7 @@ const Login = () => {
                 });
         }
         else{
-            toast.error('Failed', {
+            toast.error('No user. Please Register', {
                 position: "top-center",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -74,6 +77,8 @@ const Login = () => {
       } = useForm()
 
     const onSubmit = (data) => {
+
+        if (passwordRegex.test(data.Password)){
         
         Login(data.Email, data.Password)
         .then(result=>{
@@ -92,9 +97,23 @@ const Login = () => {
         })
         .catch(error =>{
             console.log(error);
-            notify(false);
+             notify(false);
+             
             
-        })    
+        }) 
+    } else {
+        toast.error('Password must contain at least one uppercase letter, one lowercase letter, and be at least 6 characters long.', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+        });
+    }   
     
     
     
@@ -131,7 +150,30 @@ const Login = () => {
         then(result =>{
             const user = result.user;
 
-            console.log("user signed with google", user);
+            console.log("user signed with Facebook", user);
+            const{displayName, photoURL} = user;
+            setInfo({displayName:displayName, photoURL:photoURL})
+
+            navigate(location?.state || '/')
+            
+            
+            notify(true)
+        })
+        .catch(error =>{
+            console.log(error);
+            notify(false);
+        })
+
+        
+        
+    }
+    const handleGithub = (e)=>{
+        e.preventDefault();
+        GithubSignIn().
+        then(result =>{
+            const user = result.user;
+
+            console.log("user signed with Github", user);
             const{displayName, photoURL} = user;
             setInfo({displayName:displayName, photoURL:photoURL})
 
@@ -188,8 +230,8 @@ const Login = () => {
                                     <button onClick={handleGoogle} className="btn btn-circle">
                                         <FaGoogle />
                                     </button>
-                                    <button onClick={handleFacebook} className="btn btn-circle">
-                                        <FaFacebook />
+                                    <button onClick={handleGithub} className="btn btn-circle">
+                                        <FaGithub />
                                     </button>
                                 </div>
 

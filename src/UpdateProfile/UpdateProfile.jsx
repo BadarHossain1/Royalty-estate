@@ -8,9 +8,9 @@ import { AuthContext } from "../Provider/ContextProvider";
 
 const UpdateProfile = () => {
 
-    useEffect(()=>{
+    useEffect(() => {
         document.title = "Update Profile"
-    },[])
+    }, [])
 
     const { updateUserProfile, user } = useContext(AuthContext);
     console.log(user);
@@ -56,6 +56,8 @@ const UpdateProfile = () => {
 
     } = useForm()
 
+    
+
     const onSubmit = (data) => {
 
         updateUserProfile(data.FullName, data.Photo)
@@ -71,7 +73,7 @@ const UpdateProfile = () => {
             })
             .catch(error => {
                 console.log(error);
-                notify(false);
+                // notify(false);
 
             })
 
@@ -86,7 +88,7 @@ const UpdateProfile = () => {
 
     return (
         <div className="hero min-h-[90%] mx-auto bg-[#F8F5F0]">
-            
+
             <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mx-auto mt-10 pt-8 mb-6">
                 <p className="text-4xl text-[#aa8453]  font-bold mx-auto font-playfair-display">Update Profile</p>
                 <div className="avatar">
@@ -95,6 +97,7 @@ const UpdateProfile = () => {
                     </div>
                 </div>
                 <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+                    
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Name</span>

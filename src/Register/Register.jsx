@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { IoMdEyeOff } from "react-icons/io";
 import { useForm } from "react-hook-form"
 import { FaGoogle } from "react-icons/fa";
-import { FaFacebook } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 import { AuthContext } from "../Provider/ContextProvider";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -15,7 +15,7 @@ const Register = () => {
     useEffect(()=>{
         document.title = "Register"
     },[])
-    const { registerUser, GoogleSignIn, updateUserProfile, setInfo, FacebookSignIn } = useContext(AuthContext);
+    const { registerUser, GoogleSignIn, updateUserProfile, setInfo, FacebookSignIn,GithubSignIn } = useContext(AuthContext);
     const [eye, setEye] = useState(true);
 
 
@@ -71,6 +71,7 @@ const Register = () => {
                             console.log(result.user);
                             //navigate here to home
                             navigate(from);
+                            
 
 
                         })
@@ -161,6 +162,30 @@ const Register = () => {
         
     }
 
+    const handleGithub = (e)=>{
+        e.preventDefault();
+        GithubSignIn().
+        then(result =>{
+            const user = result.user;
+
+            console.log("user signed with Github", user);
+            const{displayName, photoURL} = user;
+            setInfo({displayName:displayName, photoURL:photoURL})
+
+            navigate(location?.state || '/')
+            
+            
+            notify(true)
+        })
+        .catch(error =>{
+            console.log(error);
+            notify(false);
+        })
+
+        
+        
+    }
+
     return (
         <div className="hero min-h-[90%] mx-auto bg-[#F8F5F0]">
             
@@ -205,8 +230,8 @@ const Register = () => {
                                 <button onClick={handleGoogle} className="btn btn-circle">
                                     <FaGoogle />
                                 </button>
-                                <button onClick={handleFacebook} className="btn btn-circle">
-                                    <FaFacebook />
+                                <button onClick={handleGithub} className="btn btn-circle">
+                                    <FaGithub />
                                 </button>
                             </div>
                             <p>If you have an account then <Link to='/login' className="text-[#aa8453] font-bold font-playfair-display">Login.....</Link></p>
